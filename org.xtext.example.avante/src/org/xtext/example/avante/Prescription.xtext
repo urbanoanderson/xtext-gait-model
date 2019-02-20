@@ -1,0 +1,30 @@
+grammar org.xtext.example.avante.Prescription with org.eclipse.xtext.common.Terminals
+
+generate prescription "http://www.xtext.org/example/avante/Prescription"
+
+DomainModel :
+    (elements+=Prescription)*
+;
+
+Prescription:
+    'prescription' name=ID '{'
+        (features+=Attribute)*
+    '}'
+;
+ 
+Attribute:
+    (many?='many')? name=ID ':' attrParams=AttributeParams
+;
+
+AttributeParams:
+	intParams=IntegerParams |
+	strParams=StringParams
+;
+
+IntegerParams:
+	'Integer' ',' measureUnit=ID ',' '[' minValue=INT '-' maxValue=INT ']'
+;
+
+StringParams:
+	'String' ',' '[' defValue+=ID (',' defValue+=ID)* ']'
+;

@@ -1,0 +1,10 @@
+prescription Stroke {
+    cadencia: Integer, BPM, [60-120]
+    duracao: Integer, Minutes, [10-20]
+}
+
+prescription Parkinson {
+    cadencia: Integer, BPM, [80-150]
+    distancia: Integer, Meters, [10-100]
+    estilo: String, [HalfStep, SingleStep, DoubleStep]
+}
